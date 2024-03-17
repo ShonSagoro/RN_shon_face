@@ -12,6 +12,7 @@ class PhotoUtil:
         cv2.namedWindow(self.window_name)
         self.cap = cv2.VideoCapture(0)
         self.detector = cv2.CascadeClassifier(cascade_path)
+        self.max_photos = 300
         if os.path.exists(output_folder):
             shutil.rmtree(output_folder)
         os.makedirs(output_folder)
@@ -28,11 +29,11 @@ class PhotoUtil:
                 face_cropped = mirrored_image[y:y + h, x:x + w]
                 # Mostrar la región del rostro recortado en la ventana
                 cv2.imshow(self.window_name, face_cropped)
-                if i <= 100:
-                    cv2.imwrite(os.path.join(self.output_folder, f'face_{int(time.time())}_{i}.jpg'), face_cropped)
+                if i <= self.max_photos:
+                    cv2.imwrite(os.path.join(self.output_folder, f'shon_{i}.jpg'), face_cropped)
                     i += 1
                 else:
-                    print("Se tomaron correctamente las 100 fotos")
+                    print(f"Se tomaron correctamente las {self.max_photos} fotos")
 
             if cv2.waitKey(1) & 0xFF == 27:
                 break
@@ -43,6 +44,6 @@ class PhotoUtil:
 
 
 if __name__ == "__main__":
-    util = PhotoUtil(cv2.data.haarcascades + 'haarcascade_frontalface_alt.xml', '../data/shonFace')
+    util = PhotoUtil(cv2.data.haarcascades + 'haarcascade_frontalface_alt.xml', '../data/entrenamiento/shon')
     util.detect_and_show_face()
     util.release()

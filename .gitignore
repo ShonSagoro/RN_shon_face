@@ -26,4 +26,4 @@ dist/
 build/
 *.egg-info/
 
-src/data/*
+src/data/entrenamiento
