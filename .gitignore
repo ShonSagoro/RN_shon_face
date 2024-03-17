@@ -1,0 +1,29 @@
+# Ignorar archivos generados automáticamente
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar el entorno virtual de Python (si estás utilizando uno)
+venv/
+env/
+env*/
+.venv/
+.env/
+.env*/
+
+# Ignorar archivos de registro y archivos temporales
+*.log
+*.tmp
+
+# Ignorar archivos de configuración específicos de tu entorno local
+.vscode/
+.idea/
+.DS_Store
+
+# Ignorar archivos de salida generados
+dist/
+build/
+*.egg-info/
+
+src/data/*
