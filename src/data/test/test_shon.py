@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from keras.models import load_model
 
+
 class FaceClassifier:
     def __init__(self, model_path):
         self.model = load_model(model_path)
@@ -16,7 +17,7 @@ class FaceClassifier:
 
         faces = self.face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
         for (x, y, w, h) in faces:
-            face_img = gray[y:y+h, x:x+w]
+            face_img = gray[y:y + h, x:x + w]
             resized_face = cv2.resize(face_img, (64, 64))
             resized_face = np.array(resized_face).reshape(-1, 64, 64, 1)
 
@@ -26,6 +27,7 @@ class FaceClassifier:
                 return 'shon'
 
         return 'no_shon'
+
 
 if __name__ == "__main__":
     model_path = '../model/modelo.h5'
