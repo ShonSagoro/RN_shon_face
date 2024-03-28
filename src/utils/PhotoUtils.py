@@ -12,7 +12,7 @@ class PhotoUtil:
         cv2.namedWindow(self.window_name)
         self.cap = cv2.VideoCapture(0)
         self.detector = cv2.CascadeClassifier(cascade_path)
-        self.max_photos = 300
+        self.max_photos = 1000
         if os.path.exists(output_folder):
             shutil.rmtree(output_folder)
         os.makedirs(output_folder)
